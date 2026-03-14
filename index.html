@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Todo</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <button class="hamburger">☰</button>
+        <h2>To Do</h2>
+    </header>
+    <aside>
+        <div class="sidebar">
+            <button class="close">◀</button>
+            <button class="weekBtn" data-days="-7">이전 주</button>
+            <button class="weekBtn" data-days="7">다음 주</button>
+            <button class="theme">다크모드 설정🌙</button>
+        </div>
+    </aside>
+    <nav>
+        <button class="dateButton" id="prev">◀</button>
+        <span id="currentDate"></span>
+        <div class="calendarWrapper">
+            <input type="date" id="datePicker"/>
+        </div>
+        <button class="dateButton" id="next">▶</button>
+    </nav>
+    <main>
+        <div class="inputContainer">
+            <input placeholder="오늘의 할 일을 적어주세요!" class="input" />
+            <div class="count"><span id="todo-count">0</span>개</div>
+            <button class="enter">등록</button>
+        </div>
+        <div class="container"></div>
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>
