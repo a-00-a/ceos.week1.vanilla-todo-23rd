@@ -326,6 +326,12 @@ body.dark-mode .todo {
     word-break: break-all; /*피드백 수정; 영문, 숫자의 줄바꿈 안됨*/
 }
 
+/*완료된 할 일 텍스트 스타일*/
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
 /*할 일 삭제 버튼 스타일*/
 .delete {
     flex-shrink: 0;

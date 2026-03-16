@@ -62,16 +62,30 @@ document.addEventListener ("DOMContentLoaded", function() {
         checkbox.type = "checkbox";
         checkbox.checked = completed;
         checkbox.classList.add("checkbox");
-        checkbox.addEventListener("change", () =>
-        toggleComplete(id, checkbox.checked)
-        );
 
-        // 텍스트
+        checkbox.addEventListener("change", () => {
+            // UI 클래스 토글 먼저
+            if (checkbox.checked) {
+                todoText.classList.add("completed");
+            } else {
+                todoText.classList.remove("completed");
+            }
+            
+            // localStorage Update
+            toggleComplete(id, checkbox.checked);
+
+            /*console 확인용
+            console.log(
+                `Todo "${todoText.textContent}" completed:`,
+                todoText.classList.contains("completed")
+            );*/ 
+        });
+
+        // Todo 텍스트 요소 생성 (완료 시 CSS 클래스 적용)
         const todoText = document.createElement("span");
         todoText.textContent = text;
         if (completed) {
-        todoText.style.textDecoration = "line-through";
-        todoText.style.color = "gray";
+            todoText.classList.add("completed");
         }
 
         // 삭제버튼
