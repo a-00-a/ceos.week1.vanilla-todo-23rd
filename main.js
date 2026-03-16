@@ -219,11 +219,11 @@ document.addEventListener ("DOMContentLoaded", function() {
         closeSidebar();
     }
 
-    // Enter 입력 시 Todo 추가 (한글 IME 조합 중 입력 방지 <-- 수정필요!)
+    // Enter 입력 시 Todo 추가 (한글 IME 조합 중 입력 방지 <-- React에서 수정필요!)
     enterButton.addEventListener("click", addTodo);
 
     input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && !event.isComposing) {
+        if (event.key === "Enter") {
             addTodo();
         }
     });
