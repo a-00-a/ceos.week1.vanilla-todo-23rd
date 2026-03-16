@@ -201,10 +201,10 @@ document.addEventListener ("DOMContentLoaded", function() {
         sidebar.style.left = "-250px";
     }
 
+    // 사이드바 외부 클릭 처리 - Early Return 패턴 적용
     function handleOutsideClick(event) {
-        if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+        if (sidebar.contains(event.target) || hamburger.contains(event.target)) return; 
         closeSidebar();
-        }
     }
 
     // 이벤트 리스너 등록
