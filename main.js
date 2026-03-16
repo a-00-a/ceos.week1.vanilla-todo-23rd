@@ -130,7 +130,7 @@ document.addEventListener ("DOMContentLoaded", function() {
         localStorage.setItem(currentDate, JSON.stringify(todos));
     }
 
-
+    
 
     // 할 일 추가
     function addTodo() {

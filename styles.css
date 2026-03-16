@@ -92,7 +92,7 @@ body.dark-mode header {
 }
 
 body.dark-mode .hamburger {
-    color: var( --darkmode_hamburge);
+    color: var(--darkmode_hamburger); /*피드백 수정; color값 오타*/
 }
 
 /*내비게이션 바 스타일*/
@@ -291,7 +291,7 @@ body.dark-mode .todo {
 /*체크박스 스타일*/
 .todo input[type="checkbox"] {
     appearance: none;
-    /*flex-shrink: 0;*/
+    flex-shrink: 0;   /*피드백 수정; 왼쪽 체크박스 찌그러짐*/
     width: 18px;
     height: 18px;
     border-radius: 5px;
@@ -323,6 +323,7 @@ body.dark-mode .todo {
     flex-grow: 1;
     font-size: 14px;
     text-align: left;
+    word-break: break-all; /*피드백 수정; 영문, 숫자의 줄바꿈 안됨*/
 }
 
 /*할 일 삭제 버튼 스타일*/
