@@ -207,10 +207,13 @@ document.addEventListener ("DOMContentLoaded", function() {
         closeSidebar();
     }
 
-    // 이벤트 리스너 등록
+    // Enter 입력 시 Todo 추가 (한글 IME 조합 중 입력 방지)
     enterButton.addEventListener("click", addTodo);
-    input.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") addTodo();
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !event.isComposing) {
+            addTodo();
+        }
     });
 
     prevButton.addEventListener("click", () => changeDate(-1));
