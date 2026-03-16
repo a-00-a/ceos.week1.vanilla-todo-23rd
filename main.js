@@ -15,16 +15,25 @@ document.addEventListener ("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".close");
     const todoCountSpan = document.getElementById("todo-count");
 
-    // 현재 선택된 날짜
-    let currentDate = new Date().toISOString().split("T")[0];
-
-    // 날짜 포맷 변환 함수
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+    // Date 객체를 YYYY-MM-DD 형식의 문자열로 변환
+    function formatDateToYYYYMMDD(date) {
+        return [
+            date.getFullYear(),
+            String(date.getMonth() + 1).padStart(2, "0"),
+            String(date.getDate()).padStart(2, "0")
+        ].join("-");
     }
 
-    // UI 날짜 업데이트
+    // 현재 선택된 날짜 (YYYY-MM-DD 형식)
+    let currentDate = formatDateToYYYYMMDD(new Date());
+
+    // YYYY-MM-DD 문자열을 "YYYY년 M월 D일" 형식으로 변환
+    function formatDate(dateString) {
+        const [y, m, d] = dateString.split("-").map(Number);
+        return `${y}년 ${m}월 ${d}일`;
+    }
+
+    // 현재 날짜 상태를 UI에 반영
     function updateDateUI() {
         currentDateSpan.textContent = formatDate(currentDate);
         datePicker.value = currentDate;
@@ -170,11 +179,14 @@ document.addEventListener ("DOMContentLoaded", function() {
         todoCountSpan.textContent = activeTodos;
     }
 
-    // 날짜 변경 (이전/다음)
+    // 현재 날짜를 기준으로 days 만큼 이동
     function changeDate(days) {
-        const newDate = new Date(currentDate);
+        const [y, m, d] = currentDate.split("-").map(Number);
+        const newDate = new Date(y, m - 1, d);
+        
         newDate.setDate(newDate.getDate() + days);
-        currentDate = newDate.toISOString().split("T")[0];
+        currentDate = formatDateToYYYYMMDD(newDate);
+
         updateDateUI();
         loadTodos();
     }
@@ -207,7 +219,7 @@ document.addEventListener ("DOMContentLoaded", function() {
         closeSidebar();
     }
 
-    // Enter 입력 시 Todo 추가 (한글 IME 조합 중 입력 방지)
+    // Enter 입력 시 Todo 추가 (한글 IME 조합 중 입력 방지 <-- 수정필요!)
     enterButton.addEventListener("click", addTodo);
 
     input.addEventListener("keydown", (event) => {
@@ -231,8 +243,9 @@ document.addEventListener ("DOMContentLoaded", function() {
         );
     });
 
+    // 홈 버튼 클릭 시 오늘 날짜로 이동 
     homeButton.addEventListener("click", () => {
-        currentDate = new Date().toISOString().split("T")[0];
+        currentDate = formatDateToYYYYMMDD(new Date());
         updateDateUI();
         loadTodos();
     });
