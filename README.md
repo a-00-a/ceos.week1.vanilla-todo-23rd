@@ -1,4 +1,4 @@
-# Week 1: Vanilla JS To-do List
+# Week 1 Mission: Vanilla JS To-do List
 
 CEOS 23rd Frontend Study — Week 1 mission, a to-do list app built with vanilla JavaScript.
 
@@ -41,6 +41,25 @@ After receiving feedback, I went back and fixed a few issues:
 - **Date parsing fix**: Fixed a bug where dates would shift by a day due to UTC conversion, by parsing `YYYY-MM-DD` strings manually with `split` instead of relying on the `Date` constructor.
 - **Enter key scope**: Scoped Enter-key handling to basic single-line input only for now; full IME support is planned for the React rewrite.
 - **Completed todo styling**: Moved the "completed" style out of inline JS and into a CSS class, and synced the checkbox state with the UI properly.
+
+## Review Questions
+
+**1.What is the DOM?**
+
+The DOM (Document Object Model) is how the browser represents an HTML document as a structured object. When the browser reads HTML, it converts it into a tree-like object structure, and JavaScript uses this tree to select, modify, add, or remove elements on the page. In short, the DOM is the interface that lets JavaScript dynamically manipulate the structure and content of a web page.
+
+**2.What is event flow control (bubbling & capturing)?**
+
+Event flow describes how an event travels through the DOM when it's triggered. It happens in two phases:
+
+- **Capturing phase**: the event starts at the top-level `document` and travels downward until it reaches the actual target element.
+- **Bubbling phase**: the event then travels back upward from the target element through its parent elements. `event.stopPropagation()` can be used to stop the event from continuing to bubble up when needed.
+
+**3.What are closures and scope?**
+
+Scope defines where a variable can be accessed. A variable declared inside a function is only accessible within that function.
+
+A closure is what happens when a function "remembers" the scope it was created in — so even if that function runs somewhere else, it can still access variables from its original scope. In other words, closures let an inner function keep accessing variables from its outer function even after the outer function has finished running.
 
 ## Stack
 
